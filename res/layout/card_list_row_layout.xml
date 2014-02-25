@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <!-- Cost of the card -->
+    <TextView
+        android:id="@+id/card_list_row_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/cost_gem"
+        android:gravity="center"
+        android:textColor="@color/cost_color"
+        android:textSize="@dimen/cost_text_size" />
+
+    <!-- Title of the card -->
+    <com.util.AutoResizeTextView
+        android:id="@+id/card_list_row_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/card_row_title_left_margin"
+        android:layout_toRightOf="@id/card_list_row_cost" />
+
+    <!-- Image of the card -->
+    <ImageView
+        android:id="@+id/card_list_row_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/card_row_image_right_margin"
+        android:contentDescription="@string/card_list_row_image_content_description" />
+
+    <!-- Add card button (Disabled initially) -->
+    <ImageButton
+        android:id="@+id/card_list_row_add_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/card_list_row_add_card_button_content_description"
+        android:src="@drawable/add_card"
+        android:layout_toLeftOf="@id/card_list_row_image"
+        android:visibility="invisible"
+        android:onClick="addCard" />
+    
+    <!-- Amount of card in deck (Disabled initially) -->
+    <com.util.AutoResizeTextView 
+        android:id="@+id/card_list_row_amount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/card_list_row_image"
+        android:visibility="invisible" />
+
+</RelativeLayout>

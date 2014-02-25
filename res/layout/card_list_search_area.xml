@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Dummy item to prevent the searchbox from gaining focus at activity start.
+        See: http://stackoverflow.com/questions/1555109/stop-edittext-from-gaining-focus-at-activity-startup -->
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+        
+        <!-- android:nextFocus* are to prevent 
+        the searchbox from gaining focus at activity start -->
+        <EditText
+            android:id="@+id/card_list_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/card_list_search_hint"
+            android:inputType="textNoSuggestions"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:nextFocusUp="@id/card_list_search" 
+            android:nextFocusDown="@id/card_list_search"
+            android:nextFocusLeft="@id/card_list_search"
+            android:nextFocusRight="@id/card_list_search"
+            android:nextFocusForward="@id/card_list_search"
+            android:textSize="@dimen/card_list_search_box_text_size" />
+    
+
+</merge>

@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <dimen name="card_list_search_box_text_size">30sp</dimen>
+    
+    <dimen name="cost_text_size">30sp</dimen>
+    <dimen name="card_title_text_size">32sp</dimen>
+    
+    <dimen name="card_row_image_right_margin">10dp</dimen>
+    <dimen name="card_row_title_left_margin">10dp</dimen>
+    
+    <dimen name="card_info_title_text_size">28sp</dimen>
+    <dimen name="card_info_attrs_text_size">14sp</dimen>
+    <dimen name="card_info_line_spacing">1sp</dimen>
+    <dimen name="card_info_attrs_padding">20px</dimen>
+    
+    <dimen name="create_deck_hero_image_padding">25dp</dimen>
+
+</resources>

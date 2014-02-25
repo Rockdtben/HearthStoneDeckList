@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center" >
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_druid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_druid"
+            android:src="@drawable/druid"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_hunter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_hunter"
+            android:src="@drawable/hunter"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+			android:id="@+id/create_deck_hero_mage"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/create_deck_hero_image_padding"
+			android:contentDescription="@string/hero_mage"
+			android:src="@drawable/mage"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_paladin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_paladin"
+            android:src="@drawable/paladin"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_priest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_priest"
+            android:src="@drawable/priest"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_rogue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_rogue"
+            android:src="@drawable/rogue"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+    </TableRow>
+    
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal" >
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_shaman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_shaman"
+            android:src="@drawable/shaman"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_warlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_warlock"
+            android:src="@drawable/warlock"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+        <ImageButton
+            android:id="@+id/create_deck_hero_warrior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/create_deck_hero_image_padding" 
+            android:contentDescription="@string/hero_warrior"
+            android:src="@drawable/warrior"
+            android:background="@null"
+            android:onClick="createDeckName" />
+        
+    </TableRow>
+
+</TableLayout>

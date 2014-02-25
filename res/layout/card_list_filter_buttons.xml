@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/checkbox_rarity_free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="setRarities"
+        android:text="@string/rarity_free" />
+
+    <CheckBox
+        android:id="@+id/checkbox_rarity_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="setRarities"
+        android:text="@string/rarity_common" />
+
+    <CheckBox
+        android:id="@+id/checkbox_rarity_rare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="setRarities"
+        android:text="@string/rarity_rare" />
+
+    <CheckBox
+        android:id="@+id/checkbox_rarity_epic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="setRarities"
+        android:text="@string/rarity_epic" />
+
+    <CheckBox
+        android:id="@+id/checkbox_rarity_legendary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:onClick="setRarities"
+        android:text="@string/rarity_legendary" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/card_list_search_area_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <include layout="@layout/card_list_search_area" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/card_list_sorts_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_list_search_area_container"
+        android:orientation="vertical" >
+
+        <include layout="@layout/card_list_sorting_buttons" />
+
+        <include layout="@layout/card_list_filter_buttons" />
+    </LinearLayout>
+
+</RelativeLayout>

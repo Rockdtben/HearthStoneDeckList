@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- android:descendantFocusability="blocksDescendants"
+is to make the list item clickable -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants" >
+
+    <ImageView
+        android:id="@+id/deck_list_row_hero_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/deck_list_hero_image_content_description" />
+
+    <com.util.AutoResizeTextView
+        android:id="@+id/deck_list_row_deck_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/deck_list_row_hero_image" />
+
+    <TextView
+        android:id="@+id/deck_list_row_number_of_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+    
+    <ImageButton
+        android:id="@+id/deck_list_row_delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/deck_list_row_number_of_cards"
+        android:contentDescription="@string/delete_deck_button_content_description"
+        android:src="@drawable/delete"
+        android:onClick="deleteDeck"
+        android:background="@null" />
+
+</RelativeLayout>
