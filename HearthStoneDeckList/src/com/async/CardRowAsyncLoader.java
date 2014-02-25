@@ -23,7 +23,6 @@ public class CardRowAsyncLoader extends AsyncTask<List<DBCard>, Map<String, Obje
 
 
 	/**
-	 * @param context - To modify the images of the cards
 	 * @param adapter - The adapter to which the card rows are added
 	 */
 	public void init(CardRowAdapter adapter) {
@@ -32,6 +31,12 @@ public class CardRowAsyncLoader extends AsyncTask<List<DBCard>, Map<String, Obje
 		deckOverviewMode = false;
 	}
 	
+	/**
+	 * If a DBDeck is given as a parameter, 
+	 * it also loads the amounts of the cards into the rows
+	 * @param adapter - The adapter to which the card rows are added
+	 * @param deck - The deck which contains the amounts of the cards to be added
+	 */
 	public void init(CardRowAdapter adapter, DBDeck deck) {
 		this.adapter = adapter;
 		isStopped = false;
@@ -61,6 +66,7 @@ public class CardRowAsyncLoader extends AsyncTask<List<DBCard>, Map<String, Obje
 	@SuppressWarnings("unchecked")
 	@Override
 	protected Void doInBackground(List<DBCard>... cardLists) {
+		//More efficient to check outside the loop than inside
 		if (deckOverviewMode) {
 			Map<Integer, Integer> deckCards = deck.getDeck();
 			for (DBCard c : cardLists[0]) {

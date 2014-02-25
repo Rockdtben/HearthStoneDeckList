@@ -2,12 +2,14 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="cost_color">#ffffff</color>
     
+    <!-- Rarities -->
     <color name="rarity_free">#000000</color>
     <color name="rarity_common">#00cc00</color>
     <color name="rarity_rare">#0000ff</color>
     <color name="rarity_epic">#663399</color>
     <color name="rarity_legendary">#ff9900</color>
     
+    <!-- Card list -->
     <color name="card_list_disabled_color">#b5b5b5</color>
     
 </resources>

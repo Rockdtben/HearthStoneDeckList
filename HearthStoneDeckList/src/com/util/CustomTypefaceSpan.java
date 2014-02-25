@@ -6,6 +6,7 @@ import android.text.TextPaint;
 import android.text.style.TypefaceSpan;
 
 /**
+ * Custom Span, used to nicely format a string where only part of it needs a certain font
  * From: http://stackoverflow.com/questions/4819049/how-can-i-use-typefacespan-or-stylespan-with-a-custom-typeface
  */
 public class CustomTypefaceSpan extends TypefaceSpan {

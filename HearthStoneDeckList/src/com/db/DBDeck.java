@@ -10,6 +10,9 @@ import android.os.Parcelable;
 
 import com.db.DBCard.Hero;
 
+/**
+ * Represents a deck the user has made
+ */
 public class DBDeck implements Parcelable{
 
 	//Table names

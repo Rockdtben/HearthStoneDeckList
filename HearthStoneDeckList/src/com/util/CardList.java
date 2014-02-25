@@ -12,6 +12,9 @@ import com.db.DBCard.Hero;
 import com.db.DBCard.Rarity;
 import com.hearthstonedecklist.MyApp;
 
+/**
+ * Utility class to maintain and sort a list of DBCards
+ */
 public class CardList {
 
 	public enum Sort {
@@ -40,6 +43,9 @@ public class CardList {
 		currentHeroes = new ArrayList<Hero>(Arrays.asList(Hero.values()));
 	}
 
+	/**
+	 * Updates the list on the given preferences
+	 */
 	private void updateList() {
 		selectedCards = app.getAllCards();
 		search();
@@ -48,6 +54,9 @@ public class CardList {
 		sort();
 	}
 
+	/**
+	 * Searches in the currently selected cards for the current search string
+	 */
 	private void search() {
 		List<DBCard> searchedCards = new ArrayList<DBCard>();
 		for (DBCard c : selectedCards) {
@@ -60,6 +69,9 @@ public class CardList {
 		selectedCards = searchedCards;
 	}
 
+	/**
+	 * Filters the selected cards by the currently selected rarities
+	 */
 	private void filterRarity() {
 		List<DBCard> filteredCards = new ArrayList<DBCard>();
 		for (DBCard c : selectedCards) {
@@ -69,7 +81,10 @@ public class CardList {
 		}
 		selectedCards = filteredCards;
 	}
-
+	
+	/**
+	 * Filters the selected cards by the currently selected heroes
+	 */
 	private void filterHeroes() {
 		List<DBCard> filteredCards = new ArrayList<DBCard>();
 		for (DBCard c : selectedCards) {
@@ -80,6 +95,9 @@ public class CardList {
 		selectedCards = filteredCards;
 	}
 
+	/**
+	 * Sorts the selected cards based on the current sort
+	 */
 	private void sort() {
 		switch (currentSort) {
 		case TITLE:

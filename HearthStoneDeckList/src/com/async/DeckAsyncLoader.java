@@ -15,7 +15,6 @@ import com.util.DeckRowAdapter;
  * Loads all decks from the database, inserts them into the given adapter, 
  * and returns a list of all the decks
  * Need to call init() before executing
- *
  */
 public class DeckAsyncLoader extends AsyncTask<Void, Map<String, Object>, List<DBDeck>>{
 
@@ -24,6 +23,11 @@ public class DeckAsyncLoader extends AsyncTask<Void, Map<String, Object>, List<D
 	private DeckRowAdapter adapter;
 	private DeckListActivity createDeckActivity;
 	
+	/**
+	 * @param context - The current context
+	 * @param adapter - The adapter in which to insert the decks
+	 * @param createDeckActivity - The activity to call when the decks are loaded
+	 */
 	public void init(Context context, DeckRowAdapter adapter, DeckListActivity createDeckActivity) {
 		this.context = context;
 		this.adapter = adapter;

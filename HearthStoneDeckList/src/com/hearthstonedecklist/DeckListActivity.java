@@ -1,8 +1,6 @@
 package com.hearthstonedecklist;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
@@ -54,18 +52,12 @@ public class DeckListActivity extends Activity {
 		/*
 		 * Params:
 		 * - Context
-		 * - The maps of values to insert into the rows
 		 * - The layout of each row
-		 * - The keys corresponding to the values we want to insert into the row
-		 * - The views within the row layout where we want to insert the values
 		 * - This activity, for the callback function for the delete deck button
 		 */
 		adapter = new DeckRowAdapter(
 				this, 
-				new ArrayList<Map<String, Object>>(), 
 				R.layout.card_list_row_layout,
-				new String[] {"Hero", "Number of Cards"},
-				new int[] {R.id.deck_list_row_hero_image, R.id.deck_list_row_number_of_cards},
 				this);
 		listview.setAdapter(adapter);
 	}

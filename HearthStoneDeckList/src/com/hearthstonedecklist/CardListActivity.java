@@ -63,6 +63,7 @@ public class CardListActivity extends Activity {
 			addCardMode = false;
 		}
 		
+		//Tapping on a card reveals information about that card in a CardInfoActivity
 		setContentView(R.layout.card_list_activity);
 		listview = (ListView) findViewById(R.id.card_list);
 		listview.setOnItemClickListener(new OnItemClickListener() {

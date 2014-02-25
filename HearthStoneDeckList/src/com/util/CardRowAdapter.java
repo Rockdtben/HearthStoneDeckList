@@ -20,11 +20,20 @@ import com.db.DBCard.Rarity;
 import com.hearthstonedecklist.MyApp;
 import com.hearthstonedecklist.R;
 
+/**
+ * Presents DBCards nicely into a row, 
+ * optionally with a button to add the card to a deck
+ */
 public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
 
 	private Context context;
 	private boolean showAddCard;
 	
+	/**
+	 * @param context - The current context
+	 * @param resource - The resource ID for a layout file containing a TextView to use when instantiating views.
+	 * @param showAddCard - Whether to show a button for adding the card to a deck
+	 */
 	public CardRowAdapter(Context context, int resource, boolean showAddCard) {
 		super(context, resource);
 		this.context = context;
@@ -32,6 +41,7 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
 	}
 
 	/**
+	 * Converts a view into a card row
 	 * From: http://stackoverflow.com/questions/10161064/how-to-use-imageloader-class-in-simpleadapter-to-show-imageview-from-imageurl
 	 */
 	@Override

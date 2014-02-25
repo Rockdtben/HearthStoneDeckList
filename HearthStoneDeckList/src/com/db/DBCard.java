@@ -13,6 +13,9 @@ import android.os.Parcelable;
 
 import com.hearthstonedecklist.R;
 
+/**
+ * Represents a HearthStone card
+ */
 public class DBCard implements Parcelable{
 
 	//Table names

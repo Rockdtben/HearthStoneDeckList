@@ -14,6 +14,11 @@ import android.database.sqlite.SQLiteQueryBuilder;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+/**
+ * Database that contains all the cards, 
+ * and the decks that the user has made
+ * Need to call close() when done with the database.
+ */
 public class CardDatabase extends SQLiteAssetHelper {
 
 	private static final String DATABASE_NAME = "hearthstone_cards.db";

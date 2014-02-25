@@ -11,10 +11,14 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        /**  Card list 
+         */
         public static final int card_list_disabled_color=0x7f040006;
         public static final int cost_color=0x7f040000;
         public static final int rarity_common=0x7f040002;
         public static final int rarity_epic=0x7f040004;
+        /**  Rarities 
+         */
         public static final int rarity_free=0x7f040001;
         public static final int rarity_legendary=0x7f040005;
         public static final int rarity_rare=0x7f040003;

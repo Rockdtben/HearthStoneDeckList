@@ -21,12 +21,20 @@ import com.hearthstonedecklist.DeckListActivity;
 import com.hearthstonedecklist.MyApp;
 import com.hearthstonedecklist.R;
 
+/**
+ * Formats a deck into a row of a ListView
+ */
 public class DeckRowAdapter extends ArrayAdapter<Map<String, Object>> {
 
 	private Context context;
 	private DeckListActivity deckListActivity;
 	
-	public DeckRowAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to, DeckListActivity deckListActivity) {
+	/**
+	 * @param context - The current context
+	 * @param resource - The resource ID for a layout file containing a TextView to use when instantiating views
+	 * @param deckListActivity - The activity to call when the delete button is pressed
+	 */
+	public DeckRowAdapter(Context context, int resource, DeckListActivity deckListActivity) {
 		super(context, resource);
 		this.context = context;
 		this.deckListActivity = deckListActivity;
@@ -81,6 +89,10 @@ public class DeckRowAdapter extends ArrayAdapter<Map<String, Object>> {
 		return cardRow;
 	}
 	
+	/**
+	 * Sets the contents of this adapter to a list of decks
+	 * @param decks - The decks to be inserted
+	 */
 	public void setDecks(List<DBDeck> decks) {
 		List<Map<String, Object>> cardRows = new ArrayList<Map<String, Object>>();
 		for (DBDeck d : decks) {
