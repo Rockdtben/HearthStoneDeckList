@@ -13,6 +13,7 @@ import com.hearthstonedecklist.LoadScreenActivity;
  * Loads all the cards from the database.
  * init() must be called before executing the task.
  * Uses the LoadScreenActivity while loading.
+ * TODO: Add progress integer for nicer loading bar
  */
 public class CardDatabaseAsyncLoader extends AsyncTask<Context, Integer, List<DBCard>> {
 

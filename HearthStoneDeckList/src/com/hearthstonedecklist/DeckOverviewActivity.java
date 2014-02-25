@@ -2,6 +2,7 @@ package com.hearthstonedecklist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.async.CardRowAsyncLoader;
 import com.db.DBCard;
@@ -23,7 +23,7 @@ import com.util.CardRowAdapter;
  * during a HearthStone match.
  *
  */
-public class DeckOverviewActivity extends Activity{
+public class DeckOverviewActivity extends Activity {
 
 	private DBDeck deck;
 	private List<DBCard> deckCards;
@@ -102,14 +102,18 @@ public class DeckOverviewActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long arg3) {
 				if (isGameMode) {
-					TextView amountTextView = (TextView) view.findViewById(R.id.card_list_row_amount);
-					int amount = Integer.parseInt(((String) amountTextView.getText()));
+					
+					Map<String, Object> cardRow = adapter.getItem(position);
+					adapter.remove(cardRow);
+					int amount = (Integer) cardRow.get("Amount");
 					if (amount <= 1) {
-						amountTextView.setText("0");
-						view.setBackgroundResource(R.color.card_list_disabled_color);
+						cardRow.put("Amount", 0);
 					} else {
-						amountTextView.setText(Integer.toString(amount - 1));
+						cardRow.put("Amount", amount - 1);
 					}
+					adapter.insert(cardRow, position);
+					adapter.notifyDataSetChanged();
+					
 				} else {
 					DBCard c = deckCards.get(position);
 					Intent intent = new Intent(getBaseContext(), CardInfoActivity.class);

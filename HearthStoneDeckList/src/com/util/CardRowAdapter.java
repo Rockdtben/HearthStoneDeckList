@@ -67,10 +67,18 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
         }
         
         if (data.containsKey("Amount")) {
-        	TextView amount = (TextView) convertView.findViewById(R.id.card_list_row_amount);
-        	amount.setTypeface(MyApp.Fonts.BELWE_BOLD);
-        	amount.setText(Integer.toString((Integer) data.get("Amount")));
-        	amount.setVisibility(View.VISIBLE);
+        	TextView amountTextView = (TextView) convertView.findViewById(R.id.card_list_row_amount);
+        	amountTextView.setTypeface(MyApp.Fonts.BELWE_BOLD);
+        	int amount = (Integer) data.get("Amount");
+        	amountTextView.setText(Integer.toString(amount));
+        	amountTextView.setVisibility(View.VISIBLE);
+        	
+        	//If amounts are enabled, so is greying out the items when the amount is zero
+        	if (amount == 0) {
+        		convertView.setBackgroundResource(R.color.card_list_disabled_color);
+        	} else {
+        		convertView.setBackgroundResource(android.R.color.transparent);
+        	}
         }
         
         ((ImageView) convertView.findViewById(R.id.card_list_row_image)).setImageDrawable((Drawable) data.get("Image"));
