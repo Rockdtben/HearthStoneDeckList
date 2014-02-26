@@ -81,11 +81,13 @@ public class CardListActivity extends Activity {
 		 * - Context
 		 * - The layout of each row
 		 * - Whether the rows should display a button to add cards to a deck
+		 * - Whether the rows should display a button to delete cards from a deck
 		 */
 		adapter = new CardRowAdapter(
 				this, 
 				R.layout.card_list_row_layout,
-				addCardMode);
+				addCardMode,
+				false);
 		listview.setAdapter(adapter);
 		
 		setKeyboardListener();

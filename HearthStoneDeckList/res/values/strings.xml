@@ -36,6 +36,7 @@
     <string name="card_list_filter_rarity">Filter by rarity:</string>
     <string name="card_list_search_hint">Search</string>
     <string name="card_list_row_add_card_button_content_description">Add Card</string>
+    <string name="card_list_row_delete_card_button_content_description">Delete Card</string>
     
     <!-- Card Info Activity -->
     <string name="card_info_image_content_description">Card Image</string>
@@ -50,7 +51,7 @@
     <string name="create_deck_name_confirm_button_text">Create Deck</string>
     
     <!-- Deck Overview Activity -->
-    <string name="deck_overview_add_card_button_text">Add Card</string>
+    <string name="deck_overview_add_card_button_text">Add Cards</string>
     <string name="deck_overview_game_mode_button_text">Game Mode</string>
     
 </resources>

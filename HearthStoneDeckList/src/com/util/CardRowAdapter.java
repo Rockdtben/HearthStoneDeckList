@@ -28,16 +28,19 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
 
 	private Context context;
 	private boolean showAddCard;
+	private boolean showDeleteCard;
 	
 	/**
 	 * @param context - The current context
 	 * @param resource - The resource ID for a layout file containing a TextView to use when instantiating views.
 	 * @param showAddCard - Whether to show a button for adding the card to a deck
+	 * @param showDeleteCard - Whether to show a button for deleting the card from a deck
 	 */
-	public CardRowAdapter(Context context, int resource, boolean showAddCard) {
+	public CardRowAdapter(Context context, int resource, boolean showAddCard, boolean showDeleteCard) {
 		super(context, resource);
 		this.context = context;
 		this.showAddCard = showAddCard;
+		this.showDeleteCard = showDeleteCard;
 	}
 
 	/**
@@ -64,6 +67,11 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
         if (showAddCard) {
         	ImageButton addCard = (ImageButton) convertView.findViewById(R.id.card_list_row_add_card);
         	addCard.setVisibility(View.VISIBLE);
+        }
+        
+        if (showDeleteCard) {
+        	ImageButton deleteCard = (ImageButton) convertView.findViewById(R.id.card_list_row_delete_card);
+        	deleteCard.setVisibility(View.VISIBLE);
         }
         
         if (data.containsKey("Amount")) {

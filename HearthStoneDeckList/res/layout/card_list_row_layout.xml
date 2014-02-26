@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- android:descendantFocusability="blocksDescendants"
+is to make the list item clickable -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants" >
 
     <!-- Cost of the card -->
     <TextView
@@ -13,7 +16,7 @@
         android:background="@drawable/cost_gem"
         android:gravity="center"
         android:textColor="@color/cost_color"
-        android:textSize="@dimen/cost_text_size" />
+        android:textSize="@dimen/card_row_cost_text_size" />
 
     <!-- Title of the card -->
     <com.util.AutoResizeTextView
@@ -39,9 +42,22 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/card_list_row_add_card_button_content_description"
         android:src="@drawable/add_card"
+        android:background="@null"
         android:layout_toLeftOf="@id/card_list_row_image"
         android:visibility="invisible"
         android:onClick="addCard" />
+    
+    <!-- Delete card button (Disabled initially) -->
+    <ImageButton 
+        android:id="@+id/card_list_row_delete_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/card_list_row_delete_card_button_content_description"
+        android:src="@drawable/delete_card"
+        android:background="@null"
+        android:layout_toLeftOf="@id/card_list_row_add_card"
+        android:visibility="invisible"
+        android:onClick="deleteCard" />
     
     <!-- Amount of card in deck (Disabled initially) -->
     <com.util.AutoResizeTextView 

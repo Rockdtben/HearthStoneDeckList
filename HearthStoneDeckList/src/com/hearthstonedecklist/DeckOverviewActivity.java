@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.async.CardRowAsyncLoader;
+import com.db.CardDatabase;
 import com.db.DBCard;
 import com.db.DBDeck;
 import com.util.CardRowAdapter;
@@ -52,11 +53,13 @@ public class DeckOverviewActivity extends Activity {
 		 * - Context
 		 * - The layout of each row
 		 * - Whether the rows should display a button to add cards to a deck
+		 * - Whether the rows should display a button to delete cards from a deck
 		 */
 		adapter = new CardRowAdapter(
 				this, 
 				R.layout.card_list_row_layout,
-				false);
+				true,
+				true);
 		listview.setAdapter(adapter);
 	}
 
@@ -71,16 +74,76 @@ public class DeckOverviewActivity extends Activity {
 		prevCardRowLoader = cardRowLoader;
 	}
 
-	public void addCard(View v) {
+	/**
+	 * Switches to the card list activity with adding cards enabled.
+	 * @param v - The Add Cards button that calls this method
+	 */
+	public void addCards(View v) {
 		Intent intent = new Intent(getBaseContext(), CardListActivity.class);
 		intent.putExtra("Deck", deck);
 		startActivity(intent);
 	}
+	
+	//TODO:Make the amount changes permanent, now they're just for show
+	
+	/**
+	 * Adds another of the card clicked on to the deck.
+	 * @param v - The Add Card button inside a row that calls this method
+	 */
+	public void addCard(View v) {
+		int position = listview.getPositionForView(v);
+		Map<String, Object> cardRow = adapter.getItem(position);
+		adapter.remove(cardRow);
+		
+		int amount = (Integer) cardRow.get("Amount") + 1;
+		cardRow.put("Amount", amount);
+		adapter.insert(cardRow, position);
+		adapter.notifyDataSetChanged();
+		
+		updateCardAmount(deckCards.get(position), amount);
+	}
+	
+	/**
+	 * Deletes one of the card clicked from the deck
+	 * @param v - The Delete Card button inside a row that calls this method
+	 */
+	public void deleteCard(View v) {
+		int position = listview.getPositionForView(v);
+		Map<String, Object> cardRow = adapter.getItem(position);
+		adapter.remove(cardRow);
+		
+		int amount = (Integer) cardRow.get("Amount") - 1;
+		if (amount > 1) {
+			cardRow.put("Amount", amount);
+			adapter.insert(cardRow, position);
+		}
+		adapter.notifyDataSetChanged();
+		
+		updateCardAmount(deckCards.get(position), amount);
+	}
+	
+	/**
+	 * Updates the amount of a certain card in the deck
+	 * @param cardId - The id of the card to set the amount for
+	 * @param amount - The amount of the card
+	 */
+	private void updateCardAmount(DBCard c, int amount) {
+		Map<Integer, Integer> deckList = deck.getDeck();
+		if (amount > 0) {
+			deckList.put(c.getId(), amount);
+		} else {
+			deckList.remove(c.getId());
+		}
+		deck.setDeck(deckList);
+		CardDatabase db = new CardDatabase(this);
+		db.writeDeckCard(c, deck, amount);
+		db.close();
+	}
 
 	/**
 	 * Switches the mode of the activity, which means that instead of getting 
-	 * information when you press a listitem, the amount of that card decrements by one,
-	 * and if there are 0 left, it is greyed out.
+	 * information when you press a list item, the amount of that card decrements by one,
+	 * and if there are 0 left, it is grayed out.
 	 * @param v - The button that calls this method
 	 */
 	public void switchMode(View v) {
@@ -150,11 +213,5 @@ public class DeckOverviewActivity extends Activity {
 			}
 		}
 		return deckCards;
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		updateList();
 	}
 }

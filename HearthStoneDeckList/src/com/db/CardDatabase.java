@@ -23,7 +23,7 @@ public class CardDatabase extends SQLiteAssetHelper {
 
 	private static final String DATABASE_NAME = "hearthstone_cards.db";
 	//IMPORTANT! Every time changes are made to the database, the DATABASE_VERSION has to be incremented
-	private static final int DATABASE_VERSION = 9;
+	private static final int DATABASE_VERSION = 10;
 
 	private SQLiteDatabase db;
 	private Context context;
@@ -34,6 +34,53 @@ public class CardDatabase extends SQLiteAssetHelper {
 		//TODO: Remove forcing of current version, because now when the database changes, the user's decks are gone.
 		db = getReadableDatabase();
 		this.context = context;
+	}
+	
+	/**
+	 * Writes one card that belongs to a deck to the database
+	 * Sets the amount of the card to the given amount, no matter what the amount was before
+	 * If the given amount is zero, it deletes the deck card from the database
+	 * @param card - The card to insert
+	 * @param deck - The deck it belongs to
+	 * @param amount - The amount of the card
+	 */
+	public void writeDeckCard(DBCard card, DBDeck deck, int amount) {
+		SQLiteQueryBuilder deckCardQB = new SQLiteQueryBuilder();
+		deckCardQB.setTables(DBDeck.DECK_CARD_TABLE_NAME);
+		String[] deckCardArgs = {Integer.toString(deck.getId()), Integer.toString(card.getId())};
+		//From the table 'deck_card', get all columns WHERE deck_id=deck.getId() AND card_id=card.getId(), no ordering, no grouping
+		Cursor deckCardCursor = deckCardQB.query(
+				db,
+				null,
+				DBDeck.DECK_CARD_DECK_ID_COLUMN + "=? AND " + DBDeck.DECK_CARD_CARD_ID_COLUMN + "=?",
+				deckCardArgs,
+				null,
+				null,
+				null);
+		if (deckCardCursor.getCount() > 0) {
+			//If there already is a deck card like the card to be inserted, set the amount to the given amount
+			if (amount > 0) {
+				ContentValues values = new ContentValues();
+				values.put(DBDeck.DECK_CARD_AMOUNT_COLUMN, amount);
+				db.update(
+						DBDeck.DECK_CARD_TABLE_NAME,
+						values, 
+						DBDeck.DECK_CARD_DECK_ID_COLUMN + "=? AND " + DBDeck.DECK_CARD_CARD_ID_COLUMN + "=?",
+						deckCardArgs);
+			} else {
+				db.delete(
+						DBDeck.DECK_CARD_TABLE_NAME, 
+						DBDeck.DECK_CARD_DECK_ID_COLUMN + "=? AND " + DBDeck.DECK_CARD_CARD_ID_COLUMN + "=?", 
+						deckCardArgs);
+			}
+			
+		} else {
+			ContentValues values = new ContentValues();
+			values.put(DBDeck.DECK_CARD_CARD_ID_COLUMN, card.getId());
+			values.put(DBDeck.DECK_CARD_DECK_ID_COLUMN, deck.getId());
+			values.put(DBDeck.DECK_CARD_AMOUNT_COLUMN, amount);
+			db.insert(DBDeck.DECK_CARD_TABLE_NAME, null, values);
+		}
 	}
 	
 	/**

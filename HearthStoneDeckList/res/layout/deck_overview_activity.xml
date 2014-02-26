@@ -8,7 +8,8 @@
         android:id="@+id/deck_overview_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:gravity="center_horizontal" >
 
         <!-- The buttons have no border.
         From: http://stackoverflow.com/questions/9167900/how-to-create-borderless-buttons-in-android/9951394#9951394 -->
@@ -16,9 +17,11 @@
             android:id="@+id/deck_overview_add_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addCard"
+            android:onClick="addCards"
             android:text="@string/deck_overview_add_card_button_text"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="@dimen/deck_overview_controls_horizontal_padding"
+            android:paddingRight="@dimen/deck_overview_controls_horizontal_padding" />
         
         <Button
             android:id="@+id/deck_overview_game_mode"
@@ -26,7 +29,9 @@
             android:layout_height="wrap_content"
             android:onClick="switchMode"
             android:text="@string/deck_overview_game_mode_button_text"
-            android:background="?android:attr/selectableItemBackground" />
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="@dimen/deck_overview_controls_horizontal_padding"
+            android:paddingRight="@dimen/deck_overview_controls_horizontal_padding" />
         
     </LinearLayout>
 
