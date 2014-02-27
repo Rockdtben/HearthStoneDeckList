@@ -12,6 +12,7 @@
     <dimen name="card_row_title_text_size">32sp</dimen>
     <dimen name="card_row_image_right_margin">10dp</dimen>
     <dimen name="card_row_title_left_margin">10dp</dimen>
+    <dimen name="card_row_button_margin_horizontal">10dp</dimen>
     
     <!-- Card info -->
     <dimen name="card_info_title_text_size">28sp</dimen>

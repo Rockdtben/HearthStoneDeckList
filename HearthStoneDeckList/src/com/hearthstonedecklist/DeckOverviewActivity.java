@@ -100,7 +100,7 @@ public class DeckOverviewActivity extends Activity {
 		adapter.insert(cardRow, position);
 		adapter.notifyDataSetChanged();
 		
-		updateCardAmount(deckCards.get(position), amount);
+		updateCardAmount(position, amount);
 	}
 	
 	/**
@@ -113,13 +113,13 @@ public class DeckOverviewActivity extends Activity {
 		adapter.remove(cardRow);
 		
 		int amount = (Integer) cardRow.get("Amount") - 1;
-		if (amount > 1) {
+		if (amount > 0) {
 			cardRow.put("Amount", amount);
 			adapter.insert(cardRow, position);
 		}
 		adapter.notifyDataSetChanged();
 		
-		updateCardAmount(deckCards.get(position), amount);
+		updateCardAmount(position, amount);
 	}
 	
 	/**
@@ -127,12 +127,14 @@ public class DeckOverviewActivity extends Activity {
 	 * @param cardId - The id of the card to set the amount for
 	 * @param amount - The amount of the card
 	 */
-	private void updateCardAmount(DBCard c, int amount) {
+	private void updateCardAmount(int position, int amount) {
+		DBCard c = deckCards.get(position);
 		Map<Integer, Integer> deckList = deck.getDeck();
 		if (amount > 0) {
 			deckList.put(c.getId(), amount);
 		} else {
 			deckList.remove(c.getId());
+			deckCards.remove(position);
 		}
 		deck.setDeck(deckList);
 		CardDatabase db = new CardDatabase(this);

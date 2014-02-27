@@ -28,15 +28,16 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
-        public static final int card_info_attrs_padding=0x7f05000a;
-        public static final int card_info_attrs_text_size=0x7f050008;
-        public static final int card_info_line_spacing=0x7f050009;
+        public static final int card_info_attrs_padding=0x7f05000b;
+        public static final int card_info_attrs_text_size=0x7f050009;
+        public static final int card_info_line_spacing=0x7f05000a;
         /**  Card info 
          */
-        public static final int card_info_title_text_size=0x7f050007;
+        public static final int card_info_title_text_size=0x7f050008;
         /**  Card list controls 
          */
         public static final int card_list_search_box_text_size=0x7f050002;
+        public static final int card_row_button_margin_horizontal=0x7f050007;
         /**  Card list 
          */
         public static final int card_row_cost_text_size=0x7f050003;
@@ -45,10 +46,10 @@ public final class R {
         public static final int card_row_title_text_size=0x7f050004;
         /**  Create deck hero 
          */
-        public static final int create_deck_hero_image_padding=0x7f05000b;
+        public static final int create_deck_hero_image_padding=0x7f05000c;
         /**  Deck overview 
          */
-        public static final int deck_overview_controls_horizontal_padding=0x7f05000c;
+        public static final int deck_overview_controls_horizontal_padding=0x7f05000d;
     }
     public static final class drawable {
         public static final int add_card=0x7f020000;

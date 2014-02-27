@@ -14,7 +14,6 @@ is to make the list item clickable -->
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:background="@drawable/cost_gem"
-        android:gravity="center"
         android:textColor="@color/cost_color"
         android:textSize="@dimen/card_row_cost_text_size" />
 
@@ -23,6 +22,7 @@ is to make the list item clickable -->
         android:id="@+id/card_list_row_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/card_row_title_left_margin"
         android:layout_toRightOf="@id/card_list_row_cost" />
 
@@ -40,30 +40,37 @@ is to make the list item clickable -->
         android:id="@+id/card_list_row_add_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:contentDescription="@string/card_list_row_add_card_button_content_description"
         android:src="@drawable/add_card"
-        android:background="@null"
         android:layout_toLeftOf="@id/card_list_row_image"
         android:visibility="invisible"
-        android:onClick="addCard" />
+        android:onClick="addCard"
+        android:layout_marginLeft="@dimen/card_row_button_margin_horizontal"
+        android:layout_marginRight="@dimen/card_row_button_margin_horizontal"
+        android:background="?android:attr/selectableItemBackground" />
     
     <!-- Delete card button (Disabled initially) -->
     <ImageButton 
         android:id="@+id/card_list_row_delete_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:contentDescription="@string/card_list_row_delete_card_button_content_description"
         android:src="@drawable/delete_card"
-        android:background="@null"
         android:layout_toLeftOf="@id/card_list_row_add_card"
         android:visibility="invisible"
-        android:onClick="deleteCard" />
+        android:onClick="deleteCard"
+        android:layout_marginLeft="@dimen/card_row_button_margin_horizontal"
+        android:layout_marginRight="@dimen/card_row_button_margin_horizontal"
+        android:background="?android:attr/selectableItemBackground" />
     
     <!-- Amount of card in deck (Disabled initially) -->
     <com.util.AutoResizeTextView 
         android:id="@+id/card_list_row_amount"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@id/card_list_row_image"
         android:visibility="invisible" />
 
