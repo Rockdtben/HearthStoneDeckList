@@ -12,15 +12,17 @@ import com.db.DBCard;
 
 public class LoadScreenActivity extends Activity {
 	
-	private ProgressDialog progress;
+	private ProgressDialog progressDialog;
+	private String[] phases = {"Loading cards", "Loading card attributes"};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		progress = new ProgressDialog(this);
-		progress.show();
-		progress.setMessage("Loading cards...");
+		progressDialog = new ProgressDialog(this);
+		progressDialog.setTitle(phases[0]);
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		progressDialog.show();
 		
 		CardDatabaseAsyncLoader cardDBLoader = new CardDatabaseAsyncLoader();
 		cardDBLoader.init(this);
@@ -29,11 +31,19 @@ public class LoadScreenActivity extends Activity {
 	
 	public void finishLoadScreen(List<DBCard> allCards) {
 		((MyApp) this.getApplication()).setAllCards(allCards);
-		if (progress.isShowing()) {
-			progress.dismiss();
+		if (progressDialog.isShowing()) {
+			progressDialog.dismiss();
 		}
 		Intent myIntent = new Intent(this, CardListActivity.class);
         startActivity(myIntent);
         finish();
+	}
+	
+	public void setProgress(int progress, int total, int phase) {
+		if (progressDialog.isShowing()) {
+			progressDialog.setTitle(phases[phase]);
+			progressDialog.setProgress(progress);
+			progressDialog.setMax(total);
+		}
 	}
 }

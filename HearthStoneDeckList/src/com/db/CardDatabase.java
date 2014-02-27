@@ -1,13 +1,11 @@
 package com.db;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -26,14 +24,12 @@ public class CardDatabase extends SQLiteAssetHelper {
 	private static final int DATABASE_VERSION = 10;
 
 	private SQLiteDatabase db;
-	private Context context;
 
 	public CardDatabase(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		setForcedUpgrade(DATABASE_VERSION); //Forces to use current version, just overwrites what was there.
 		//TODO: Remove forcing of current version, because now when the database changes, the user's decks are gone.
 		db = getReadableDatabase();
-		this.context = context;
 	}
 	
 	/**
@@ -232,54 +228,25 @@ public class CardDatabase extends SQLiteAssetHelper {
 
 		return allDecks;
 	}
-
+	
 	/**
-	 * Gets all the DBCards from the database
-	 * @return - All the DBCards, fully populated, in a list
+	 * @return - A cursor that contains all the rows from the table 'card'
 	 */
-	public List<DBCard> makeDBCards() {
-		List<DBCard> allCards = new ArrayList<DBCard>();
-		AssetManager assetManager = context.getAssets();
-
+	public Cursor allCardsCursor() {
 		SQLiteQueryBuilder cardQB = new SQLiteQueryBuilder();
 		cardQB.setTables(DBCard.CARD_TABLE_NAME);
 		//From the table 'card' get all columns, all rows, no ordering, no grouping
-		Cursor cardCursor = cardQB.query(db, null, null, null, null, null, null);
-
-		//Make DBCards, no card lists yet
-		cardCursor.moveToFirst();
-		while (!cardCursor.isAfterLast()) {
-			DBCard card;
-			try {
-				card = DBCard.cursorToDBCard(cardCursor, assetManager);
-				allCards.add(card);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			cardCursor.moveToNext();
-		}
-		cardCursor.close();
-
-
+		return cardQB.query(db, null, null, null, null, null, null);
+	}
+	
+	/**
+	 * @return - A cursor that contains all the rows from the table 'card_list_item'
+	 */
+	public Cursor allCardListItemsCursor() {
 		SQLiteQueryBuilder cardListQB = new SQLiteQueryBuilder();
 		cardListQB.setTables(DBCard.CARD_LIST_ITEM_TABLE_NAME);
 		//From the table 'card_list_item' get all columns, all rows, no ordering, no grouping
-		Cursor cardListCursor = cardListQB.query(db, null, null, null, null, null, null);
-
-		//Adding the card list items to the DBCards
-		cardListCursor.moveToFirst();
-		while (!cardListCursor.isAfterLast()) {
-			for (DBCard card : allCards) {
-				//If the id of a card equals the 'card_id' column of a row in the card list items
-				if (card.getId() == cardListCursor.getInt(cardListCursor.getColumnIndex(DBCard.CARD_LIST_ITEM_ID_COLUMN))) {
-					card.addAttr(cardListCursor);
-				}
-			}
-			cardListCursor.moveToNext();
-		}
-		cardListCursor.close();
-
-		return allCards;
+		return cardListQB.query(db, null, null, null, null, null, null);
 	}
 
 	public void close() {
