@@ -124,7 +124,7 @@ public class DBCard implements Parcelable{
 				, c.getString(c.getColumnIndex(ABILITIES_COLUMN))
 				, c.getString(c.getColumnIndex(FLAVOR_TEXT_COLUMN))
 				, c.getInt(c.getColumnIndex(COST_COLUMN))
-				, BitmapFactory.decodeStream(assets.open(c.getString(c.getColumnIndex(IMAGE_COLUMN)) + ".jpg")));
+				, BitmapFactory.decodeStream(assets.open(c.getString(c.getColumnIndex(IMAGE_COLUMN)) + ".png")));
 	}
 
 	/**

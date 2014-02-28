@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center" >
+
+    <!--
+         The buttons have no border.
+        From: http://stackoverflow.com/questions/9167900/how-to-create-borderless-buttons-in-android/9951394#9951394
+    -->
+
+    <Button
+        android:id="@+id/menubar_card_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="goToCardList"
+        android:text="@string/menubar_card_list_button_text" />
+
+    <Button
+        android:id="@+id/menubar_deck_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:onClick="goToDeckList"
+        android:text="@string/menubar_deck_list_button_text" />
+
+</LinearLayout>

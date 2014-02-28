@@ -68,7 +68,7 @@ public final class R {
         public static final int warrior=0x7f02000d;
     }
     public static final class id {
-        public static final int action_create_deck=0x7f090029;
+        public static final int action_create_deck=0x7f09002b;
         public static final int button_sort_cost=0x7f090013;
         public static final int button_sort_rarity=0x7f090012;
         public static final int button_sort_title=0x7f090011;
@@ -110,6 +110,8 @@ public final class R {
         public static final int deck_overview_card_list=0x7f090028;
         public static final int deck_overview_controls=0x7f090025;
         public static final int deck_overview_game_mode=0x7f090027;
+        public static final int menubar_card_list_button=0x7f090029;
+        public static final int menubar_deck_list_button=0x7f09002a;
     }
     public static final class layout {
         public static final int card_info_activity=0x7f030000;
@@ -125,6 +127,7 @@ public final class R {
         public static final int deck_list_footer=0x7f03000a;
         public static final int deck_list_row_layout=0x7f03000b;
         public static final int deck_overview_activity=0x7f03000c;
+        public static final int menubar=0x7f03000d;
     }
     public static final class menu {
         public static final int card_list_action_bar=0x7f080000;
@@ -136,53 +139,57 @@ public final class R {
         public static final int app_name=0x7f060000;
         /**  Card Info Activity 
          */
-        public static final int card_info_image_content_description=0x7f06001b;
-        public static final int card_list_cost_sort_button=0x7f060016;
-        public static final int card_list_filter_rarity=0x7f060017;
-        public static final int card_list_rarity_sort_button=0x7f060015;
-        public static final int card_list_row_add_card_button_content_description=0x7f060019;
-        public static final int card_list_row_cost=0x7f060012;
-        public static final int card_list_row_delete_card_button_content_description=0x7f06001a;
+        public static final int card_info_image_content_description=0x7f06001d;
+        public static final int card_list_cost_sort_button=0x7f060018;
+        public static final int card_list_filter_rarity=0x7f060019;
+        public static final int card_list_rarity_sort_button=0x7f060017;
+        public static final int card_list_row_add_card_button_content_description=0x7f06001b;
+        public static final int card_list_row_cost=0x7f060014;
+        public static final int card_list_row_delete_card_button_content_description=0x7f06001c;
         /**  Card List Activity 
          */
-        public static final int card_list_row_image_content_description=0x7f060011;
-        public static final int card_list_search_hint=0x7f060018;
-        public static final int card_list_sort_text=0x7f060013;
-        public static final int card_list_title_sort_button=0x7f060014;
+        public static final int card_list_row_image_content_description=0x7f060013;
+        public static final int card_list_search_hint=0x7f06001a;
+        public static final int card_list_sort_text=0x7f060015;
+        public static final int card_list_title_sort_button=0x7f060016;
         /**  Action Bar 
          */
-        public static final int create_deck_action=0x7f060002;
-        public static final int create_deck_name_confirm_button_text=0x7f060020;
+        public static final int create_deck_action=0x7f060004;
+        public static final int create_deck_name_confirm_button_text=0x7f060022;
         /**  Create Deck Name Activity 
          */
-        public static final int create_deck_name_hint=0x7f06001f;
-        public static final int deck_list_create_deck_button_text=0x7f06001d;
+        public static final int create_deck_name_hint=0x7f060021;
+        public static final int deck_list_create_deck_button_text=0x7f06001f;
         /**  Deck List Activity 
          */
-        public static final int deck_list_hero_image_content_description=0x7f06001c;
+        public static final int deck_list_hero_image_content_description=0x7f06001e;
         /**  Deck Overview Activity 
          */
-        public static final int deck_overview_add_card_button_text=0x7f060021;
-        public static final int deck_overview_game_mode_button_text=0x7f060022;
-        public static final int delete_deck_button_content_description=0x7f06001e;
+        public static final int deck_overview_add_card_button_text=0x7f060023;
+        public static final int deck_overview_game_mode_button_text=0x7f060024;
+        public static final int delete_deck_button_content_description=0x7f060020;
         /**  Heroes 
          */
-        public static final int hero_druid=0x7f060003;
-        public static final int hero_hunter=0x7f060004;
-        public static final int hero_mage=0x7f060005;
-        public static final int hero_paladin=0x7f060006;
-        public static final int hero_priest=0x7f060007;
-        public static final int hero_rogue=0x7f060008;
-        public static final int hero_shaman=0x7f060009;
-        public static final int hero_warlock=0x7f06000a;
-        public static final int hero_warrior=0x7f06000b;
-        public static final int rarity_common=0x7f06000d;
-        public static final int rarity_epic=0x7f06000f;
+        public static final int hero_druid=0x7f060005;
+        public static final int hero_hunter=0x7f060006;
+        public static final int hero_mage=0x7f060007;
+        public static final int hero_paladin=0x7f060008;
+        public static final int hero_priest=0x7f060009;
+        public static final int hero_rogue=0x7f06000a;
+        public static final int hero_shaman=0x7f06000b;
+        public static final int hero_warlock=0x7f06000c;
+        public static final int hero_warrior=0x7f06000d;
+        /**  Menu bar 
+         */
+        public static final int menubar_card_list_button_text=0x7f060002;
+        public static final int menubar_deck_list_button_text=0x7f060003;
+        public static final int rarity_common=0x7f06000f;
+        public static final int rarity_epic=0x7f060011;
         /**  Rarities 
          */
-        public static final int rarity_free=0x7f06000c;
-        public static final int rarity_legendary=0x7f060010;
-        public static final int rarity_rare=0x7f06000e;
+        public static final int rarity_free=0x7f06000e;
+        public static final int rarity_legendary=0x7f060012;
+        public static final int rarity_rare=0x7f060010;
     }
     public static final class style {
         /** 

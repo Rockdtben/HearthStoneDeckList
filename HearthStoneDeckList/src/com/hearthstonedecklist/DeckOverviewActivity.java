@@ -84,8 +84,6 @@ public class DeckOverviewActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	//TODO:Make the amount changes permanent, now they're just for show
-	
 	/**
 	 * Adds another of the card clicked on to the deck.
 	 * @param v - The Add Card button inside a row that calls this method

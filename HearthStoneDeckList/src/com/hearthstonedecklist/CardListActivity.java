@@ -8,9 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -216,33 +213,20 @@ public class CardListActivity extends Activity {
 	}
 	
 	/**
-	 * Open the Deck List Activity
+	 * Called by the menubar_card_list_button to go to the CardListActivity
+	 * @param v - The view that calls this method
 	 */
-	private void openDeckListActivity() {
-		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
+	public void goToCardList(View v) {
+		Intent intent = new Intent(getBaseContext(), CardListActivity.class);
 		startActivity(intent);
 	}
 	
 	/**
-	 * Add creating a new deck to the action bar
-	 * From: http://developer.android.com/guide/topics/ui/actionbar.html
+	 * Called by the menubar_deck_list_button to go to the DeckListActivity
+	 * @param v - The view that calls this method
 	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    // Inflate the menu items for use in the action bar
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.card_list_action_bar, menu);
-	    return super.onCreateOptionsMenu(menu);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_create_deck:
-	        	openDeckListActivity();
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+	public void goToDeckList(View v) {
+		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
+		startActivity(intent);
 	}
 }
