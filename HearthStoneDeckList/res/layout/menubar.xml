@@ -1,29 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center" >
+    android:gravity="center"
+    android:orientation="vertical" >
 
-    <!--
-         The buttons have no border.
-        From: http://stackoverflow.com/questions/9167900/how-to-create-borderless-buttons-in-android/9951394#9951394
-    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/menubar_card_list_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:onClick="goToCardList"
-        android:text="@string/menubar_card_list_button_text" />
+        <!--
+        The buttons have no border.
+        From: http://stackoverflow.com/questions/9167900/how-to-create-borderless-buttons-in-android
+        -->
 
-    <Button
-        android:id="@+id/menubar_deck_list_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:onClick="goToDeckList"
-        android:text="@string/menubar_deck_list_button_text" />
+        <Button
+            android:id="@+id/menubar_card_list_button"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="goToCardList"
+            android:text="@string/menubar_card_list_button_text" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/menubar_separator_color" />
+            
+        </LinearLayout>
+        
+        <Button
+            android:id="@+id/menubar_deck_list_button"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="goToDeckList"
+            android:text="@string/menubar_deck_list_button_text" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/menubar_separator_color" />
 
 </LinearLayout>

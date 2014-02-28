@@ -4,6 +4,7 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -97,5 +99,23 @@ public class CardInfoActivity extends Activity {
 	
 	private DBCard getCard() {
 		return (DBCard) getIntent().getExtras().getParcelable("Card");
+	}
+	
+	/**
+	 * Called by the menubar_card_list_button to go to the CardListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToCardList(View v) {
+		Intent intent = new Intent(getBaseContext(), CardListActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * Called by the menubar_deck_list_button to go to the DeckListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToDeckList(View v) {
+		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
+		startActivity(intent);
 	}
 }

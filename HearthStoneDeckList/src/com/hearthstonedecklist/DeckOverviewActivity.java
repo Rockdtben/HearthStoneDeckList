@@ -1,6 +1,7 @@
 package com.hearthstonedecklist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.async.CardRowAsyncLoader;
 import com.db.CardDatabase;
 import com.db.DBCard;
 import com.db.DBDeck;
+import com.util.CardList;
 import com.util.CardRowAdapter;
 
 /**
@@ -38,6 +40,7 @@ public class DeckOverviewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		deck = getDeck();
 		deckCards = getCards(deck);
+		Collections.sort(deckCards, CardList.getCostComparator());
 		initUI();
 		updateList();
 		isGameMode = false;
@@ -213,5 +216,22 @@ public class DeckOverviewActivity extends Activity {
 			}
 		}
 		return deckCards;
+	}
+	
+	/**
+	 * Called by the menubar_card_list_button to go to the CardListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToCardList(View v) {
+		Intent intent = new Intent(getBaseContext(), CardListActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * Called by the menubar_deck_list_button to go to the DeckListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToDeckList(View v) {
+		//Do nothing, we're already in the deck list
 	}
 }

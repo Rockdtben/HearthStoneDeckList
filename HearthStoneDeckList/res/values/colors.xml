@@ -12,4 +12,7 @@
     <!-- Card list -->
     <color name="card_list_disabled_color">#b5b5b5</color>
     
+    <!-- Menu bar -->
+    <color name="menubar_separator_color">#aaa</color>
+    
 </resources>

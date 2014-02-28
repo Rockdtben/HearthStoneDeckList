@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     
     <!-- Menu bar -->
-    <string name="menubar_card_list_button_text">All Cards</string>
+    <string name="menubar_card_list_button_text">Browse Cards</string>
     <string name="menubar_deck_list_button_text">Decks</string>
     
     <!-- Action Bar -->

@@ -117,7 +117,7 @@ public class CardList {
 	/**
 	 * @return - A comparator that compares cards on the title
 	 */
-	private static Comparator<DBCard> getTitleComparator() {
+	public static Comparator<DBCard> getTitleComparator() {
 		return new Comparator<DBCard>() {
 			@Override
 			public int compare(DBCard c1, DBCard c2) {
@@ -129,7 +129,7 @@ public class CardList {
 	/**
 	 * @return - A comparator that compares cards on the cost, secondary on rarity, tertiary on title
 	 */
-	private static Comparator<DBCard> getCostComparator() {
+	public static Comparator<DBCard> getCostComparator() {
 		return new Comparator<DBCard>() {
 			@Override
 			public int compare(DBCard c1, DBCard c2) {
@@ -145,7 +145,7 @@ public class CardList {
 	/**
 	 * @return - A comparator that compares cards on the rarity, secondary on title
 	 */
-	private static Comparator<DBCard> getRarityComparator() {
+	public static Comparator<DBCard> getRarityComparator() {
 		return new Comparator<DBCard>() {
 			@Override
 			public int compare(DBCard c1, DBCard c2) {

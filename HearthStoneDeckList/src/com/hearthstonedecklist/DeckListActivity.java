@@ -103,4 +103,22 @@ public class DeckListActivity extends Activity {
 		super.onResume();
 		getAllDecks();
 	}
+	
+	/**
+	 * Called by the menubar_card_list_button to go to the CardListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToCardList(View v) {
+		Intent intent = new Intent(getBaseContext(), CardListActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * Called by the menubar_deck_list_button to go to the DeckListActivity
+	 * @param v - The view that calls this method
+	 */
+	public void goToDeckList(View v) {
+		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
+		startActivity(intent);
+	}
 }
