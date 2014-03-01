@@ -1,0 +1,56 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hearthstonedecktracker"
+    android:versionCode="1"
+    android:versionName="1.0.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <!-- android:largeHeap is for allocating enough memory to store all of the card images in memory -->
+    <application
+        android:name="com.hearthstonedecktracker.HearthstoneDeckTracker"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true" >
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.LoadScreenActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.CardListActivity" >
+        </activity>
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.CardInfoActivity" >
+        </activity>
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.DeckListActivity" >
+        </activity>
+        
+        <!-- CreateDeckHeroActivity is not recorded in the history stack -->
+        <activity 
+            android:name="com.hearthstonedecktracker.CreateDeckHeroActivity"
+            android:noHistory="true" >
+        </activity>
+        
+        <!-- CreateDeckNameActivity is not recorded in the history stack -->
+        <activity 
+            android:name="com.hearthstonedecktracker.CreateDeckNameActivity"
+            android:noHistory="true" >
+        </activity>
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.DeckOverviewActivity" >
+        </activity>
+    </application>
+
+</manifest>

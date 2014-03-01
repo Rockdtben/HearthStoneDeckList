@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App -->
+    <string name="app_name">Hearthstone Deck Tracker</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- Menu bar -->
+    <string name="menubar_card_list_button_text">Browse Cards</string>
+    <string name="menubar_deck_list_button_text">Decks</string>
+    
+    <!-- Action Bar -->
+    <string name="create_deck_action">Create deck</string>
+    
+    <!-- Heroes -->
+    <string name="hero_druid">Druid</string>
+    <string name="hero_hunter">Hunter</string>
+    <string name="hero_mage">Mage</string>
+    <string name="hero_paladin">Paladin</string>
+    <string name="hero_priest">Priest</string>
+    <string name="hero_rogue">Rogue</string>
+    <string name="hero_shaman">Shaman</string>
+    <string name="hero_warlock">Warlock</string>
+    <string name="hero_warrior">Warrior</string>
+    
+    <!-- Rarities -->
+    <string name="rarity_free">Free</string>
+    <string name="rarity_common">Common</string>
+    <string name="rarity_rare">Rare</string>
+    <string name="rarity_epic">Epic</string>
+    <string name="rarity_legendary">Legendary</string>
+    
+    <!-- Card List Activity -->
+    <string name="card_list_row_image_content_description">Card List Row Image</string>
+    <string name="card_list_row_cost">Cost</string>
+    <string name="card_list_sort_text">Sort by:</string>
+    <string name="card_list_title_sort_button">Name</string>
+    <string name="card_list_rarity_sort_button">Rarity</string>
+    <string name="card_list_cost_sort_button">Cost</string>
+    <string name="card_list_filter_rarity">Filter by rarity:</string>
+    <string name="card_list_search_hint">Search</string>
+    <string name="card_list_row_add_card_button_content_description">Add Card</string>
+    <string name="card_list_row_delete_card_button_content_description">Delete Card</string>
+    <string-array name="card_list_hero_options_array">
+        <item>All Heroes</item>
+        <item>Neutral</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Paladin</item>
+        <item>Priest</item>
+        <item>Rogue</item>
+        <item>Shaman</item>
+        <item>Warlock</item>
+        <item>Warrior</item>
+    </string-array>
+    
+    
+    <!-- Card Info Activity -->
+    <string name="card_info_image_content_description">Card Image</string>
+    
+    <!-- Deck List Activity -->
+    <string name="deck_list_hero_image_content_description">Hero Image</string>
+    <string name="deck_list_create_deck_button_text">Create new deck</string>
+    <string name="delete_deck_button_content_description">Delete Deck</string>
+    
+    <!-- Create Deck Name Activity -->
+    <string name="create_deck_name_hint">Enter a name for your deck</string>
+    <string name="create_deck_name_confirm_button_text">Create Deck</string>
+    
+    <!-- Deck Overview Activity -->
+    <string name="deck_overview_add_card_button_text">Add Cards</string>
+    <string name="deck_overview_game_mode_button_text">Game Mode</string>
+    
+</resources>
