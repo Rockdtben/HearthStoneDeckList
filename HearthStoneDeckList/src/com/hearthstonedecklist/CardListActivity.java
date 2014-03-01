@@ -1,6 +1,7 @@
 package com.hearthstonedecklist;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -12,11 +13,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.CheckBox;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.ToggleButton;
 
 import com.async.CardRowAsyncLoader;
 import com.db.CardDatabase;
@@ -27,8 +31,13 @@ import com.util.CardList;
 import com.util.CardList.Sort;
 import com.util.CardRowAdapter;
 
+/**
+ * Implements OnItemSelectedListener is for drop-down menu of the choice of hero filters
+ * @author Soerian
+ *
+ */
 @SuppressWarnings("unchecked")
-public class CardListActivity extends Activity {
+public class CardListActivity extends Activity implements OnItemSelectedListener {
 
 	private CardList cardlist;
 	private ListView listview;
@@ -49,6 +58,8 @@ public class CardListActivity extends Activity {
 	
 	private void init() {
 		cardlist = new CardList((MyApp) getApplication());
+		setContentView(R.layout.card_list_activity);
+		//If we're adding cards to a deck
 		if (getIntent().hasExtra("Deck")) {
 			addCardMode = true;
 			deck = (DBDeck) getIntent().getExtras().getParcelable("Deck");
@@ -58,10 +69,21 @@ public class CardListActivity extends Activity {
 			cardlist.setCurrentHeroes(heroes);
 		} else {
 			addCardMode = false;
+			
+			//Populate heroes spinner, heroes can only be selected when not adding cards to a deck
+			Spinner spinner = (Spinner) findViewById(R.id.card_list_heroes_spinner);
+			ArrayAdapter<CharSequence> heroesAdapter = ArrayAdapter.createFromResource(
+					this,
+			        R.array.card_list_hero_options_array, 
+			        android.R.layout.simple_spinner_item);
+			heroesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spinner.setAdapter(heroesAdapter);
+			spinner.setOnItemSelectedListener(this);
 		}
 		
+		
+		
 		//Tapping on a card reveals information about that card in a CardInfoActivity
-		setContentView(R.layout.card_list_activity);
 		listview = (ListView) findViewById(R.id.card_list);
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -72,14 +94,7 @@ public class CardListActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-
-		/*
-		 * Params:
-		 * - Context
-		 * - The layout of each row
-		 * - Whether the rows should display a button to add cards to a deck
-		 * - Whether the rows should display a button to delete cards from a deck
-		 */
+		
 		adapter = new CardRowAdapter(
 				this, 
 				R.layout.card_list_row_layout,
@@ -89,6 +104,7 @@ public class CardListActivity extends Activity {
 		
 		setKeyboardListener();
 		
+		cardlist.setCurrentSort(Sort.RARITY);
 		updateList();
 	}
 	
@@ -116,16 +132,16 @@ public class CardListActivity extends Activity {
 	}
 
 	/**
-	 * Filters the list of cards depending on the selected rarity filter checkboxes
+	 * Filters the list of cards depending on the selected rarity filter toggle buttons
 	 */
 	private void setRarities() {
 		List<DBCard.Rarity> rarities = new ArrayList<DBCard.Rarity>();
 
-		CheckBox free = (CheckBox) findViewById(R.id.checkbox_rarity_free);
-		CheckBox common = (CheckBox) findViewById(R.id.checkbox_rarity_common);
-		CheckBox rare = (CheckBox) findViewById(R.id.checkbox_rarity_rare);
-		CheckBox epic = (CheckBox) findViewById(R.id.checkbox_rarity_epic);
-		CheckBox legendary = (CheckBox) findViewById(R.id.checkbox_rarity_legendary);
+		ToggleButton free = (ToggleButton) findViewById(R.id.card_list_filter_button_rarity_free);
+		ToggleButton common = (ToggleButton) findViewById(R.id.card_list_filter_button_rarity_common);
+		ToggleButton rare = (ToggleButton) findViewById(R.id.card_list_filter_button_rarity_rare);
+		ToggleButton epic = (ToggleButton) findViewById(R.id.card_list_filter_button_rarity_epic);
+		ToggleButton legendary = (ToggleButton) findViewById(R.id.card_list_filter_button_rarity_legendary);
 
 		if (free.isChecked()) {
 			rarities.add(DBCard.Rarity.FREE);
@@ -161,6 +177,10 @@ public class CardListActivity extends Activity {
 	 */
 	public void setRarities(View v) {
 		setRarities();
+	}
+	
+	public void setHeroes(List<Hero> heroes) {
+		cardlist.setCurrentHeroes(heroes);
 	}
 
 	/**
@@ -229,4 +249,24 @@ public class CardListActivity extends Activity {
 		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
 		startActivity(intent);
 	}
+
+	//Spinner interface requirements
+	/**
+	 * Depending on what hero is selected, filters the list
+	 */
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+		//'All' is selected
+		if (position == 0) {
+			cardlist.setCurrentHeroes(new ArrayList<Hero>(Arrays.asList(Hero.values())));
+		} else {
+			ArrayList<Hero> heroes = new ArrayList<Hero>();
+			heroes.add(DBCard.Hero.values()[position - 1]);
+			setHeroes(heroes);
+		}
+		updateList();
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {}
 }

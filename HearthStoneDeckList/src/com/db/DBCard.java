@@ -63,6 +63,7 @@ public class DBCard implements Parcelable{
 	//There are so few heroes that they can be stored in code also
 	public static enum Hero {
 
+		NEUTRAL("Neutral"),
 		DRUID("Druid", 1, R.drawable.druid),
 		HUNTER("Hunter", 2, R.drawable.hunter),
 		MAGE("Mage", 3, R.drawable.mage),
@@ -71,8 +72,7 @@ public class DBCard implements Parcelable{
 		ROGUE("Rogue", 6, R.drawable.rogue),
 		SHAMAN("Shaman", 7, R.drawable.shaman),
 		WARLOCK("Warlock", 8, R.drawable.warlock),
-		WARRIOR("Warrior", 9, R.drawable.warrior),
-		NEUTRAL("Neutral");
+		WARRIOR("Warrior", 9, R.drawable.warrior);
 
 		public String name;
 		public int id;

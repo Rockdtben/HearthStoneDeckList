@@ -41,6 +41,20 @@
     <string name="card_list_search_hint">Search</string>
     <string name="card_list_row_add_card_button_content_description">Add Card</string>
     <string name="card_list_row_delete_card_button_content_description">Delete Card</string>
+    <string-array name="card_list_hero_options_array">
+        <item>All Heroes</item>
+        <item>Neutral</item>
+        <item>Druid</item>
+        <item>Hunter</item>
+        <item>Mage</item>
+        <item>Paladin</item>
+        <item>Priest</item>
+        <item>Rogue</item>
+        <item>Shaman</item>
+        <item>Warlock</item>
+        <item>Warrior</item>
+    </string-array>
+    
     
     <!-- Card Info Activity -->
     <string name="card_info_image_content_description">Card Image</string>

@@ -232,6 +232,7 @@ public class DeckOverviewActivity extends Activity {
 	 * @param v - The view that calls this method
 	 */
 	public void goToDeckList(View v) {
-		//Do nothing, we're already in the deck list
+		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
+		startActivity(intent);
 	}
 }

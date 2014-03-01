@@ -4,44 +4,49 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
-    <CheckBox
-        android:id="@+id/checkbox_rarity_free"
+    <ToggleButton
+        android:id="@+id/card_list_filter_button_rarity_free"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:onClick="setRarities"
-        android:text="@string/rarity_free" />
+        android:textOn="@string/rarity_free"
+        android:textOff="@string/rarity_free" />
 
-    <CheckBox
-        android:id="@+id/checkbox_rarity_common"
+    <ToggleButton
+        android:id="@+id/card_list_filter_button_rarity_common"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:onClick="setRarities"
-        android:text="@string/rarity_common" />
+        android:textOn="@string/rarity_common"
+        android:textOff="@string/rarity_common" />
 
-    <CheckBox
-        android:id="@+id/checkbox_rarity_rare"
+    <ToggleButton
+        android:id="@+id/card_list_filter_button_rarity_rare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:onClick="setRarities"
-        android:text="@string/rarity_rare" />
+        android:textOn="@string/rarity_rare"
+        android:textOff="@string/rarity_rare" />
 
-    <CheckBox
-        android:id="@+id/checkbox_rarity_epic"
+    <ToggleButton
+        android:id="@+id/card_list_filter_button_rarity_epic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:onClick="setRarities"
-        android:text="@string/rarity_epic" />
+        android:textOn="@string/rarity_epic"
+        android:textOff="@string/rarity_epic" />
 
-    <CheckBox
-        android:id="@+id/checkbox_rarity_legendary"
+    <ToggleButton
+        android:id="@+id/card_list_filter_button_rarity_legendary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:onClick="setRarities"
-        android:text="@string/rarity_legendary" />
+        android:textOn="@string/rarity_legendary"
+        android:textOff="@string/rarity_legendary" />
 
 </LinearLayout>
