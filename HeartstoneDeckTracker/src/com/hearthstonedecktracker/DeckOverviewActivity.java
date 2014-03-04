@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,11 +60,22 @@ public class DeckOverviewActivity extends Activity {
 		 * - Whether the rows should display a button to delete cards from a deck
 		 */
 		adapter = new CardRowAdapter(
-				this, 
+				this,
 				R.layout.card_list_row_layout,
 				true,
-				true);
+				true,
+				showCardTitle());
 		listview.setAdapter(adapter);
+	}
+	
+	/**
+	 * Decides whether there is room to show the title of the cards
+	 * @return - Whether to show the card titles
+	 */
+	private boolean showCardTitle() {
+		boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+		int orientation = getResources().getConfiguration().orientation;
+		return isTablet || orientation != Configuration.ORIENTATION_PORTRAIT;
 	}
 
 	@SuppressWarnings("unchecked")

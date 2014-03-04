@@ -28,6 +28,7 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
 	private Context context;
 	private boolean showAddCard;
 	private boolean showDeleteCard;
+	private boolean showCardTitle;
 	
 	/**
 	 * @param context - The current context
@@ -35,11 +36,12 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
 	 * @param showAddCard - Whether to show a button for adding the card to a deck
 	 * @param showDeleteCard - Whether to show a button for deleting the card from a deck
 	 */
-	public CardRowAdapter(Context context, int resource, boolean showAddCard, boolean showDeleteCard) {
+	public CardRowAdapter(Context context, int resource, boolean showAddCard, boolean showDeleteCard, boolean showCardTitle) {
 		super(context, resource);
 		this.context = context;
 		this.showAddCard = showAddCard;
 		this.showDeleteCard = showDeleteCard;
+		this.showCardTitle = showCardTitle;
 	}
 
 	/**
@@ -58,10 +60,12 @@ public class CardRowAdapter extends ArrayAdapter<Map<String, Object>> {
         cost.setTypeface(HearthstoneDeckTracker.Fonts.BELWE_BOLD);
         cost.setText((String) data.get("Cost"));
         
-        AutoResizeTextView title = (AutoResizeTextView) convertView.findViewById(R.id.card_list_row_title);
-        title.setTypeface(HearthstoneDeckTracker.Fonts.BELWE_BOLD);
-        title.setText((String) data.get("Title"));
-        title.setTextColor(context.getResources().getColor(((Rarity) data.get("Rarity")).colorId));
+        if (showCardTitle) {
+        	AutoResizeTextView title = (AutoResizeTextView) convertView.findViewById(R.id.card_list_row_title);
+            title.setTypeface(HearthstoneDeckTracker.Fonts.BELWE_BOLD);
+            title.setText((String) data.get("Title"));
+            title.setTextColor(context.getResources().getColor(((Rarity) data.get("Rarity")).colorId));
+        }
         
         if (showAddCard) {
         	ImageButton addCard = (ImageButton) convertView.findViewById(R.id.card_list_row_add_card);

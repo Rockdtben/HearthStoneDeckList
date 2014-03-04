@@ -12,7 +12,6 @@ import com.util.CardRowAdapter;
 /**
  * Class to load card rows asynchronously.
  * Needs to be initialized by calling init()
- * TODO: For some reason the cards are not loaded in order initially
  */
 public class CardRowAsyncLoader extends AsyncTask<List<DBCard>, Map<String, Object>, Void>{
 

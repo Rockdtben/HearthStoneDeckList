@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -83,7 +84,6 @@ public class CardListActivity extends Activity implements OnItemSelectedListener
 		}
 		
 		
-		
 		//Tapping on a card reveals information about that card in a CardInfoActivity
 		listview = (ListView) findViewById(R.id.card_list);
 		listview.setOnItemClickListener(new OnItemClickListener() {
@@ -100,7 +100,8 @@ public class CardListActivity extends Activity implements OnItemSelectedListener
 				this, 
 				R.layout.card_list_row_layout,
 				addCardMode,
-				false);
+				false,
+				showCardTitle());
 		listview.setAdapter(adapter);
 		
 		setKeyboardListener();
@@ -231,6 +232,16 @@ public class CardListActivity extends Activity implements OnItemSelectedListener
 				return false;
 			}
 		});
+	}
+	
+	/**
+	 * Decides whether there is room to show the title of the cards
+	 * @return - Whether to show the card titles
+	 */
+	private boolean showCardTitle() {
+		boolean isTablet = getResources().getBoolean(R.bool.isTablet);
+		int orientation = getResources().getConfiguration().orientation;
+		return !addCardMode && (isTablet || orientation != Configuration.ORIENTATION_PORTRAIT);
 	}
 	
 	/**
