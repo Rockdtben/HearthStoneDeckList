@@ -43,7 +43,6 @@ public class DeckOverviewActivity extends Activity {
 		deckCards = getCards(deck);
 		Collections.sort(deckCards, CardList.getCostComparator());
 		initUI();
-		updateList();
 		isGameMode = false;
 		setOnItemClickListener();
 	}
@@ -51,7 +50,10 @@ public class DeckOverviewActivity extends Activity {
 	private void initUI() {
 		setContentView(R.layout.deck_overview_activity);
 		listview = (ListView) findViewById(R.id.deck_overview_card_list);
-
+		updateUI(true,true);
+	}
+	
+	private void updateUI(boolean showAddCard, boolean showDeleteCard) {
 		/*
 		 * Params:
 		 * - Context
@@ -62,10 +64,12 @@ public class DeckOverviewActivity extends Activity {
 		adapter = new CardRowAdapter(
 				this,
 				R.layout.card_list_row_layout,
-				true,
-				true,
+				showAddCard,
+				showDeleteCard,
 				showCardTitle());
 		listview.setAdapter(adapter);
+		
+		updateList();
 	}
 	
 	/**
@@ -163,10 +167,8 @@ public class DeckOverviewActivity extends Activity {
 	 */
 	public void switchMode(View v) {
 		isGameMode = !isGameMode;
-		//If we're no longer in game mode, reset the list
-		if (!isGameMode) {
-			updateList();
-		}
+		updateUI(!isGameMode, !isGameMode);
+		updateList();
 	}
 
 	/**
