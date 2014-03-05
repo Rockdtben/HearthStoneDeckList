@@ -185,14 +185,14 @@ public class DeckOverviewActivity extends Activity {
 				if (isGameMode && !longPress) {
 					
 					Map<String, Object> cardRow = adapter.getItem(position);
-					adapter.remove(cardRow);
 					int amount = (Integer) cardRow.get("Amount");
 					if (amount <= 1) {
 						cardRow.put("Amount", 0);
+						adapter.remove(cardRow);
+						adapter.insert(cardRow, adapter.getCount());
 					} else {
 						cardRow.put("Amount", amount - 1);
 					}
-					adapter.insert(cardRow, position);
 					adapter.notifyDataSetChanged();
 					
 				} else if (!isGameMode) {
