@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
 import com.async.CardRowAsyncLoader;
@@ -35,6 +36,7 @@ public class DeckOverviewActivity extends Activity {
 	private CardRowAdapter adapter;
 	private CardRowAsyncLoader prevCardRowLoader;
 	private boolean isGameMode;
+	private boolean longPress = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -179,7 +181,7 @@ public class DeckOverviewActivity extends Activity {
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long arg3) {
-				if (isGameMode) {
+				if (isGameMode && !longPress) {
 					
 					Map<String, Object> cardRow = adapter.getItem(position);
 					adapter.remove(cardRow);
@@ -192,16 +194,31 @@ public class DeckOverviewActivity extends Activity {
 					adapter.insert(cardRow, position);
 					adapter.notifyDataSetChanged();
 					
-				} else {
+				} else if (!isGameMode) {
 					DBCard c = deckCards.get(position);
 					Intent intent = new Intent(getBaseContext(), CardInfoActivity.class);
 					intent.putExtra("Card", c);
 					startActivity(intent);
 				}
-
+				longPress = false;
 			}
 		});
+		
+		listview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long arg3) {
+				if (isGameMode) {
+					DBCard c = deckCards.get(position);
+					Intent intent = new Intent(getBaseContext(), CardInfoActivity.class);
+					intent.putExtra("Card", c);
+					startActivity(intent);
+					longPress = true;
+				}
+				return false;
+			}
+		
+		});
 	}
 
 	/**
