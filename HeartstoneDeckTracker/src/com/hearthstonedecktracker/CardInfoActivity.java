@@ -17,15 +17,20 @@ import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.db.DBCard;
 import com.util.AutoResizeTextView;
 import com.util.CustomTypefaceSpan;
 
 public class CardInfoActivity extends Activity {
+	
+	private LinearLayout mainLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,12 @@ public class CardInfoActivity extends Activity {
 		
 		LayoutInflater inflater = 
 			      (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout mainLayout = (LinearLayout) inflater.inflate(R.layout.card_info_activity, null);
+		mainLayout = (LinearLayout) inflater.inflate(R.layout.card_info_activity, null);
 		setContentView(mainLayout);
 		
 		DBCard card = getCard();
+		
+		setOnItemClickListener();
 		
 		//The DBCard itself only contains the top third of the image, so we have to load the whole thing
 		ImageView cardImageView = (ImageView) findViewById(R.id.card_info_image);
@@ -125,5 +132,16 @@ public class CardInfoActivity extends Activity {
 	public void goToDeckList(View v) {
 		Intent intent = new Intent(getBaseContext(), DeckListActivity.class);
 		startActivity(intent);
+	}
+	
+	public void setOnItemClickListener() {
+		mainLayout.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				finish();
+			}
+
+		});
 	}
 }
