@@ -168,7 +168,6 @@ public class DeckOverviewActivity extends Activity {
 	public void switchMode(View v) {
 		isGameMode = !isGameMode;
 		updateUI(!isGameMode, !isGameMode);
-		updateList();
 	}
 
 	/**
