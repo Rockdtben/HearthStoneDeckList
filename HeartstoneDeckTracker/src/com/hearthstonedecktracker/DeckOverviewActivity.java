@@ -184,7 +184,9 @@ public class DeckOverviewActivity extends Activity {
 					Map<String, Object> cardRow = adapter.getItem(position);
 					int amount = (Integer) cardRow.get("Amount");
 					if (amount <= 1) {
+						cardRow.put("Amount", 0);
 						adapter.remove(cardRow);
+						adapter.insert(cardRow, adapter.getCount());
 					} else {
 						cardRow.put("Amount", amount - 1);
 					}
