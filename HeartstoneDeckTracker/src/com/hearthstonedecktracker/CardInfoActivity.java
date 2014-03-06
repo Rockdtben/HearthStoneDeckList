@@ -18,11 +18,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.db.DBCard;
 import com.util.AutoResizeTextView;

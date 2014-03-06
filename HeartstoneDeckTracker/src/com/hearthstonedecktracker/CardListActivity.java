@@ -241,7 +241,7 @@ public class CardListActivity extends Activity implements OnItemSelectedListener
 	private boolean showCardTitle() {
 		boolean isTablet = getResources().getBoolean(R.bool.isTablet);
 		int orientation = getResources().getConfiguration().orientation;
-		return !addCardMode && (isTablet || orientation != Configuration.ORIENTATION_PORTRAIT);
+		return isTablet || orientation != Configuration.ORIENTATION_PORTRAIT || !addCardMode;
 	}
 	
 	/**
