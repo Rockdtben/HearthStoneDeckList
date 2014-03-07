@@ -20,8 +20,8 @@
             <Spinner
                 android:id="@+id/card_list_heroes_spinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible" />
+                android:layout_height="match_parent"
+                android:visibility="gone" />
         </LinearLayout>
 
         <include layout="@layout/card_list_filter_buttons" />
