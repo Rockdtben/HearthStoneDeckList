@@ -183,6 +183,46 @@ public class CardDatabase extends SQLiteAssetHelper {
 		//Delete from the table 'deck_card' all deck_cards with card_id = deck.getId()
 		db.delete(DBDeck.DECK_CARD_TABLE_NAME, DBDeck.DECK_CARD_DECK_ID_COLUMN + "=?", deckIdArg);
 	}
+	
+	/**
+	 * Retrieves a deck with the given id, else returns null
+	 * @param id - The id of the deck to retrieve
+	 * @return - The DBDeck found
+	 */
+	public DBDeck getDeckById(int id) {
+		DBDeck deck;
+		
+		SQLiteQueryBuilder deckQB = new SQLiteQueryBuilder();
+		deckQB.setTables(DBDeck.DECK_TABLE_NAME);
+		//From the table 'deck' get all columns where deck id equals the given id, no ordering, no grouping
+		Cursor deckCursor = deckQB.query(db, null, DBDeck.DECK_ID_COLUMN + "=" + Integer.toString(id), null, null, null, null);
+
+		if (deckCursor.getCount() > 0) {
+			deckCursor.moveToFirst();
+			deck = DBDeck.cursorToDBDeck(deckCursor);
+			deckCursor.close();
+		} else {
+			return null;
+		}
+		
+		SQLiteQueryBuilder deckCardQB = new SQLiteQueryBuilder();
+		deckCardQB.setTables(DBDeck.DECK_CARD_TABLE_NAME);
+		//From the table 'deck_card' get all columns, all rows, no ordering, no grouping
+		Cursor deckCardCursor = deckCardQB.query(db, null, DBDeck.DECK_CARD_DECK_ID_COLUMN + "=" + Integer.toString(id), null, null, null, null);
+		
+		//If there actually are any deck_cards
+		if (deckCardCursor.getCount() > 0) {
+			//Add the deck cards to the decks
+			deckCardCursor.moveToFirst();
+			while (!deckCardCursor.isAfterLast()) {
+				deck.addCard(deckCardCursor);
+				deckCardCursor.moveToNext();
+			}
+		}
+		deckCardCursor.close();
+		
+		return deck;
+	}
 
 	/**
 	 * Gets all the decks from the database

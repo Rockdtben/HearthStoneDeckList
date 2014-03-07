@@ -248,6 +248,16 @@ public class DeckOverviewActivity extends Activity {
 		return deckCards;
 	}
 	
+	@Override
+	public void onResume() {
+		super.onResume();
+		CardDatabase db = new CardDatabase(this);
+		deck = db.getDeckById(deck.getId());
+		db.close();
+		deckCards = getCards(deck);
+		updateList();
+	}
+	
 	/**
 	 * Called by the menubar_card_list_button to go to the CardListActivity
 	 * @param v - The view that calls this method
