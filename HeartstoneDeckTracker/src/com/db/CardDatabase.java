@@ -21,7 +21,7 @@ public class CardDatabase extends SQLiteAssetHelper {
 
 	private static final String DATABASE_NAME = "hearthstone_cards.db";
 	//IMPORTANT! Every time changes are made to the database, the DATABASE_VERSION has to be incremented
-	private static final int DATABASE_VERSION = 10;
+	private static final int DATABASE_VERSION = 11;
 
 	private SQLiteDatabase db;
 
