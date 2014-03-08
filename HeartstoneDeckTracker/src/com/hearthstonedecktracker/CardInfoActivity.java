@@ -38,7 +38,7 @@ public class CardInfoActivity extends Activity {
 	 * meaning which attribute comes where on the page.
 	 * The lower the higher up the page.
 	 */
-	private static final String[] ps = {"Type: ", "Class: ", "Rarity: ", "Set: ", "Crafting Cost: ", "Arcane Dust Gained: ", "Collectible", "Elite"};
+	private static final String[] ps = {"Type: ", "Class: ", "Rarity: ", "Set: ", "Crafting Cost: ", "Arcane Dust Gained: ", "Artist: ", "Race: ", "Faction: ", "Collectible", "Elite"};
 	private static final List<String> priorities = new ArrayList<String>(Arrays.asList(ps));
 	
 	private LinearLayout mainLayout;
