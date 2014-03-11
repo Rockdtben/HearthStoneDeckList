@@ -6,6 +6,14 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission 
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission 
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" />
 
     <!-- android:largeHeap is for allocating enough memory to store all of the card images in memory -->
     <application
@@ -50,6 +58,10 @@
         
         <activity 
             android:name="com.hearthstonedecktracker.DeckOverviewActivity" >
+        </activity>
+        
+        <activity 
+            android:name="com.hearthstonedecktracker.DeckRecognitionActivity" >
         </activity>
     </application>
 

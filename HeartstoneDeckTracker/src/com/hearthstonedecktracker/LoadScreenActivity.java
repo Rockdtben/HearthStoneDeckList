@@ -34,7 +34,7 @@ public class LoadScreenActivity extends Activity {
 		if (progressDialog.isShowing()) {
 			progressDialog.dismiss();
 		}
-		Intent myIntent = new Intent(this, CardListActivity.class);
+		Intent myIntent = new Intent(this, DeckListActivity.class);
         startActivity(myIntent);
         finish();
 	}

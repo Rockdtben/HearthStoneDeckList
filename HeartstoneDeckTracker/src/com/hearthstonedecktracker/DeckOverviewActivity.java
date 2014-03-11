@@ -248,6 +248,15 @@ public class DeckOverviewActivity extends Activity {
 		return deckCards;
 	}
 	
+	/**
+	 * Called by the deck_overview_ocr button to go to the DeckRecognitionActivity
+	 * @param v - The view that calls this method 
+	 */
+	public void goToDeckRecognition(View v) {
+		Intent intent = new Intent(getBaseContext(), DeckRecognitionActivity.class);
+		startActivity(intent);
+	}
+	
 	@Override
 	public void onResume() {
 		super.onResume();
