@@ -1,6 +1,6 @@
 Hearthstone Deck Tracker
 ===================
-Hearthstone Deck Tracker is an app for Android. 
+Hearthstone Deck Tracker is an app for Android that is currently in Alpha.
 It enables you to track what cards you have drawn during a Hearthstone match.
 
 To download the app, first join this group: https://groups.google.com/forum/#!forum/hearthstone-deck-tracker
